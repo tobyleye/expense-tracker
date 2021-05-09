@@ -8,7 +8,7 @@ app.use(express.json())
 app.get('/hi', greetings)
 app.get('/bye', bye)
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('App is running...')
 })
 
