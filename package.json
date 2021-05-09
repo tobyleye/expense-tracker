@@ -6,7 +6,8 @@
   "scripts": {
     "watch-ts": "tsc --watch",
     "dev": "nodemon ./dist/index.js",
-    "start": "tsc && node ./dist/index.js"
+    "build": "rm -rf build && npx tsc",
+    "start": "npm run build && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
