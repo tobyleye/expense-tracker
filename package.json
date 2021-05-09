@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch-ts": "tsc --watch",
-    "dev": "npm run watch-ts & nodemon ./dist/index.js"
+    "dev": "nodemon ./dist/index.js",
+    "start": "tsc && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",

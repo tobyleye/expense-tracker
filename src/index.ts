@@ -1,4 +1,4 @@
-import express, {Application} from "express"
+import express  from "express"
 import { greetings, bye } from "./routes/greetings"
 
 const app = express()
@@ -11,3 +11,4 @@ app.get('/bye', bye)
 app.listen(3000, () => {
     console.log('App is running...')
 })
+

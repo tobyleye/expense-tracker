@@ -7,7 +7,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "noEmitOnError": false,
+    "noEmitOnError": true,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   }
 }
