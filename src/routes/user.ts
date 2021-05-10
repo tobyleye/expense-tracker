@@ -5,7 +5,14 @@ import jwt from "jsonwebtoken"
 
 export async function register(req: Request, res: Response, next: NextFunction) {
   try {
-    const user: IUser = new User(req.body)
+    let { email, password, firstName, lastName} = req.body;
+    let hashedPassword = await bcrypt.hash(password, 8)
+    const user: IUser = new User({
+      email,
+      firstName,
+      lastName,
+      password: hashedPassword
+    })
     await user.save()
     res.send('OK')
   } catch (err) {
