@@ -91,7 +91,6 @@
     color: green;
 }
 
-.txt
 .txn:not(:last-child) {
     border-bottom: 1px solid #dee;
 }
