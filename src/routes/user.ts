@@ -1,5 +1,5 @@
 import User, { IUser } from "../models/users"
-import { Request, Response, NextFunction, json } from "express"
+import { Request, Response, NextFunction } from "express"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
@@ -24,8 +24,8 @@ export async function login(req: Request, res: Response, next: NextFunction) {
   const { email, password } = req.body;
   // validation
   if (!email || !password) {
-    res.status(400).json({
-      ErrorEvent: 'email and password is required'
+   return res.status(400).json({
+      error: 'email and password is required'
     })
   }
   try {

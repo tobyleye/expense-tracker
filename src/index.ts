@@ -2,6 +2,7 @@ require('dotenv').config()
 import express, { ErrorRequestHandler, Request, Response, NextFunction}  from "express"
 import { greetings, bye } from "./routes/greetings"
 import { register, login } from "./routes/user"
+import entry from "./routes/entry"
 import http from "http"
 import cors from "cors"
 
@@ -17,10 +18,8 @@ app.get('/hi', greetings)
 app.get('/bye', bye)
 app.post('/register', register)
 app.post('/login', login)
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log('App is running...')
-})
+app.post('/entries', entry.create)
+app.get('/entries/:id', entry.get)
 
 app.use((req, res) => {
     res.send(http.STATUS_CODES[404])
@@ -31,3 +30,6 @@ app.use((err: Error, req: Request, res: Response) => {
     res.status(500).json({ error: 'internal error '})
 })
 
+app.listen(process.env.PORT || 3000, () => {
+    console.log('App is running...')
+})
