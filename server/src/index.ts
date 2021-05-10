@@ -1,5 +1,5 @@
 require('dotenv').config()
-import express, { ErrorRequestHandler, Request, Response, NextFunction}  from "express"
+import express, { Request, Response } from "express"
 import { greetings, bye } from "./routes/greetings"
 import { register, login } from "./routes/user"
 import entry from "./routes/entry"
@@ -19,17 +19,20 @@ app.get('/bye', bye)
 app.post('/register', register)
 app.post('/login', login)
 app.post('/entries', entry.create)
-app.get('/entries/:id', entry.get)
+
+app.route('/entries/:id')
+  .get(entry.get)
+  .delete(entry.delete)
 
 app.use((req, res) => {
-    res.send(http.STATUS_CODES[404])
+  res.send(http.STATUS_CODES[404])
 })
 
 // error handler
 app.use((err: Error, req: Request, res: Response) => {
-    res.status(500).json({ error: 'internal error '})
+  res.status(500).json({ error: 'internal error ' })
 })
 
 app.listen(process.env.PORT || 3000, () => {
-    console.log('App is running...')
+  console.log('App is running...')
 })
